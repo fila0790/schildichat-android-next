@@ -138,9 +138,13 @@ sealed interface TimelineItem {
             get() = EventOrTransactionId.from(eventId = eventId, transactionId = transactionId)
 
         // No need to be lazy here?
+        // SC fork: disable authenticity / message shield warnings
+        val messageShield: MessageShieldData? = null
+        /*
         val messageShield: MessageShieldData? = messageShieldProvider(strict = false)?.let {
             MessageShieldData(it, forwarder, forwarderProfile)
         }
+        */
 
         val debugInfo: TimelineItemDebugInfo
             get() = timelineItemDebugInfoProvider()
